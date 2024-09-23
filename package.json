@@ -14,10 +14,15 @@
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
     "automated-bill-processing": "file:",
+    "bootstrap": "^5.3.3",
+    "highcharts": "^11.4.8",
+    "highcharts-react-official": "^3.2.1",
     "next": "14.2.12",
     "react": "^18",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18",
-    "sass": "^1.79.1"
+    "sass": "^1.79.1",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "eslint": "^8",

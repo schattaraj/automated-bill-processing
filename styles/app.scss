@@ -1,0 +1,59 @@
+@import './components.scss';
+* {
+    font-family: 'Poppins', sans-serif;
+}
+.btn-primary{
+    background-color: $primary !important;
+    border-color: $primary !important;
+    &:hover{
+        background-color: $primaryDark;
+        border-color: $primaryDark;
+    }
+    &:focus-visible{
+        background-color: $primaryDark;
+        border-color: $primaryDark; 
+        }
+    &:first-child{
+        &:active{
+        background-color: $primaryDark;
+        border-color: $primaryDark; 
+        }
+    }
+}
+.copy-right{
+    padding: 20px 0;
+    text-align: center;
+    p{
+        margin-bottom: 0;
+        font-size: 12px;
+        font-weight: 700;
+        color: $darkGray;
+    }
+}
+//custom scroll bar
+/* WebKit Browsers */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #EAEAEA;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #adadad;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+// /* Firefox */
+// * {
+//     scrollbar-width: thin;
+//     scrollbar-color: #888 #f1f1f1;
+// }
+
