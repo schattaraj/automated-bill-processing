@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import ListTable from './ListTable'
 import Dropdown from 'react-bootstrap/Dropdown';
+import FolderList from './FolderList';
 
-function CardList({table, heading, tableColumns, tableData }) {
+function CardList({table, heading, tableColumns, tableData,folderList }) {
   const [selectedMonth, setSelectedMonth] = useState("");
   const handleChange = (event) => {
     const month = event.target.value;
@@ -50,19 +51,19 @@ function CardList({table, heading, tableColumns, tableData }) {
         </div>
         <div className="actions">
           <input type="search" className="form-control search" placeholder='Search' />
-          <select name="document_status" className="form-select">
+         {table && <select name="document_status" className="form-select">
             <option>Document Status</option>
             <option value="Status 1">Status 1</option>
             <option value="Status 2">Status 2</option>
-          </select>
-          <select name="sort_by" className="form-select">
+          </select>}
+         {table && <select name="sort_by" className="form-select">
             <option>Sort By</option>
             <option value="Ascending">Ascending</option>
             <option value="Decending">Decending</option>
-          </select>
+          </select>}
           <button className='btn btn-primary'><span>Search</span> <img src="/icons/search.svg" alt="" /></button>
           <button className='btn btn-primary'><span>Export File</span><img src="/icons/export_file.svg" alt="" /></button>
-          <button className='btn btn-primary'><span>Move To</span><img src="/icons/move_to.svg" alt="" /></button>
+         {table && <button className='btn btn-primary'><span>Move To</span><img src="/icons/move_to.svg" alt="" /></button>}
           {/* <button className='btn btn-primary'><span>Create New</span><img src="/icons/create_new.svg" alt="" /></button> */}
           <Dropdown className='create-new'>
             <Dropdown.Toggle variant="primary" id="create_new">
@@ -85,7 +86,10 @@ function CardList({table, heading, tableColumns, tableData }) {
         </div>
         {
           table && <ListTable columnNames={tableColumns} data={tableData} />
-        }        
+        }     
+        {
+          folderList && <FolderList items={folderList}/>
+        }   
       </div>
     </>
   )
