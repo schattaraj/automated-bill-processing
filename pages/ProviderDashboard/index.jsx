@@ -159,10 +159,24 @@ export default function ProviderDashboard() {
           <Swiper
             modules={[Navigation]}
             spaceBetween={18}
-            slidesPerView={4.5}
+            slidesPerView={1}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
             navigation
+            breakpoints={{
+              640: {
+                slidesPerView: 2, // for small screens
+              },
+              768: {
+                slidesPerView: 2, // for medium screens
+              },
+              1024: {
+                slidesPerView: 3, // for larger screens
+              },
+              1280: {
+                slidesPerView: 4.5, // for extra large screens
+              },
+            }}
           >
             <SwiperSlide><DBCard title={"12.5K"} description={"Document Processed"} img={"/icons/file.svg"} link={"/"} /></SwiperSlide>
             <SwiperSlide><DBCard title={"20"} description={"Awating processing"} img={"/icons/processing.svg"} link={"/"} /></SwiperSlide>
@@ -173,7 +187,7 @@ export default function ProviderDashboard() {
           </Swiper>
           <div className="section2">
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-lg-8 order-2 order-lg-1">
                 <h6 className="heading">Claim Adjudicated Analysis</h6>
                 <div className="cards">
                   <div className="card-item">
@@ -204,7 +218,7 @@ export default function ProviderDashboard() {
                       <div className="line">
                         <span className="days">5 Days</span>
                         <img src="/icons/avg-tat-analysis/adjudicated.svg" alt="" className="first-image" />
-                        <img src="/icons/avg-tat-analysis/payment.svg" alt="" />
+                        <img src="/icons/avg-tat-analysis/payment.svg" alt="" className="second-image"/>
                       </div>
                     </div>
                     <div className="names">
@@ -214,7 +228,7 @@ export default function ProviderDashboard() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4">
+              <div className="col-lg-4 order-1 order-lg-2">
                 <h6 className="heading">Recent Activity</h6>
                 <ul className="recent-activity">
                   <li>
@@ -283,7 +297,7 @@ export default function ProviderDashboard() {
           </div>
           <div className="chart-area">
             <div className="row">
-              <div className="col-md-7">
+              <div className="col-lg-7">
                 <div className="claim-settlement card">
                   <div className="flex">
                     <h6 className="heading">Claim Settlement in Year</h6>
@@ -314,7 +328,7 @@ export default function ProviderDashboard() {
                   <BarChart options={claimSettlementOption}/>
                 </div>
               </div>
-              <div className="col-md-5">
+              <div className="col-lg-5">
                 <div className="card document-integrated">
                 <h6 className="heading">Documents Integrated in Current Month</h6>
                 <BarChart options={documentIntegratedOption}/>

@@ -12,7 +12,7 @@ console.log("Route",router);
       <Link href="/ProviderDashboard" className={router?.pathname == '/ProviderDashboard' ? 'active' : ''}>Dashboard</Link>
       <Link href="/DocumentList" className={router?.pathname == '/DocumentList' ? 'active' : ''}>Document List</Link>
       <Link href="/ClaimReported" className={router?.pathname == '/ClaimReported' ? 'active' : ''}>Claim Reported</Link>
-      <Link href="#" className={router?.pathname == '/' ? 'active' : ''}>Folders</Link>
+      <Link href="/Folders" className={router?.pathname == '/Folders' ? 'active' : ''}>Folders</Link>
     </div>
     </>
   )

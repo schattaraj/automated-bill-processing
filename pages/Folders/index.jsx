@@ -162,13 +162,22 @@ const tableData = [
       "Self"
   ]
 ]
+const folderList = [
+    "Dr Shital Patil",
+    "Dr Agh Khan",
+    "Dr Nilam Dalvi",
+    "Dr Patil Surendra",
+    "Dr Preeti Jain",
+    "Dr Kanika Jain"
+]
+
   return (
     <>
     <ProviderHeader />
     <div className="document-list">
         <div className="container">
         <ProviderMenu />
-        <CardList  table={true} heading={"Claim Reported"} tableColumns={tableColumns} tableData={tableData}/>
+        <CardList  table={false} heading={"Folders"} tableColumns={tableColumns} tableData={tableData} folderList={folderList}/>
         </div>
     </div>
     <Footer/>
