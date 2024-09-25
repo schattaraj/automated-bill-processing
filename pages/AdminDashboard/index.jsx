@@ -45,21 +45,17 @@ export default function AdminDashboard() {
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
             breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
-              576: {
-                slidesPerView: 2.5,
-                spaceBetween: 15,
+              640: {
+                slidesPerView: 2, // for small screens
               },
               768: {
-                slidesPerView: 3.5,
-                spaceBetween: 20,
+                slidesPerView: 2, // for medium screens
               },
-              1920: {
-                slidesPerView: 4.5,
-                spaceBetween: 18,
+              1024: {
+                slidesPerView: 3, // for larger screens
+              },
+              1280: {
+                slidesPerView: 4.5, // for extra large screens
               },
             }}
             navigation
