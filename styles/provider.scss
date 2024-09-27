@@ -18,6 +18,9 @@ body {
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
+      @media (min-width: 992px) {
+        height: auto !important;
+      }
       .dropdown {
         margin-right: 26px;
 
@@ -854,6 +857,17 @@ body {
     img {
       margin-right: 10px;
       height: 24px;
+    }
+  }
+}
+
+nav {
+  .breadcrumb {
+    .breadcrumb-item {
+      a {
+        text-decoration: none;
+        color: rgba($primary, 1);
+      }
     }
   }
 }
