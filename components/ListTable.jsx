@@ -8,18 +8,18 @@ const ListTable = ({columnNames,data}) => {
                   <tr>
                     {
                     columnNames.map((item,index)=>{
-                        return <th key={"thead"+index}>{item}</th>
+                        return <th key={"thead"+index}>{item?.displayName}</th>
                     })
                     }
                     </tr>
                   </thead>
                   <tbody>
-                    {
+                    {                     
                       data.map((item,index)=>{
                         return <tr key={"tbody"+index}>{
-                          item.map((innerItem,index)=>{
-                            return <td key={"td"+index}>{innerItem}</td>
-                          })
+                           columnNames.map((innerItem,index)=>{
+                        return <td key={"td"+index}>{innerItem?.elementName == "name" && <img src="/icons/pdf.svg"/>}{item[innerItem?.elementName]}</td>
+                    })
                           }</tr>
                       })
                     }

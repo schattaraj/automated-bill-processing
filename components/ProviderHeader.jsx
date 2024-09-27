@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function ProviderHeader() {
     const [showActions, setShowActions] = useState(false)
     const [isAnimating, setIsAnimating] = useState(false);
-
+    const menuRef = useRef(null); // Reference to the menu
     const handleToggle = () => {
         if (showActions) {
             setShowActions(false)
@@ -24,8 +24,15 @@ function ProviderHeader() {
                 <div className="container">
                     <div className="flex">
                         <img src="/images/logo.png" alt="" className="logo" />
-                        <button className={showActions ? "toggle-button collapsed" : "toggle-button"} onClick={handleToggle}></button>
-                        <div className={showActions ? "actions show" : "actions"}>
+                        <button className={`toggle-button ${showActions ? "collapsed" : ""}`} onClick={handleToggle}></button>
+                        <div className={`actions ${showActions ? "show" : ""}`}
+                        style={{
+                            height: showActions ? `${menuRef.current.scrollHeight}px` : '0',
+                            overflow: 'hidden',
+                            transition: 'height 0.3s ease' // Smooth transition
+                        }}
+                        ref={menuRef}
+                        >
                             <Dropdown className='upload'>
                                 <Dropdown.Toggle variant="primary" id="dropdown-basic">
                                     Upload Documents
