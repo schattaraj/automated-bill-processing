@@ -17,7 +17,11 @@ import {
   countryData,
   sourceOfDocumentOptions,
   documentIntegratedOption,
+  swiperData,
+  recentActivity,
 } from "@/utils/constants";
+import Image from "next/image";
+import CustomBreadcrumb from "@/components/CustomBreadcrumb";
 export default function AdminDashboard() {
   const [providerCountry, setProviderCountry] = useState(0);
 
@@ -61,55 +65,19 @@ export default function AdminDashboard() {
               }}
               navigation
             >
-              <SwiperSlide>
-                <DBCard
-                  title={"12.5K"}
-                  description={"Document Processed"}
-                  img={"/icons/file.svg"}
-                  link={"/DocumentDetails"}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DBCard
-                  title={"20"}
-                  description={"Awating processing"}
-                  img={"/icons/processing.svg"}
-                  link={"/DocumentDetails"}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DBCard
-                  title={"1.8K"}
-                  description={"Processing Error"}
-                  img={"/icons/alert.svg"}
-                  link={"/DocumentDetails"}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DBCard
-                  title={"8.56K"}
-                  description={"Integrated To Eoxegen"}
-                  img={"/icons/integrated.svg"}
-                  link={"/DocumentDetails"}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DBCard
-                  title={"5.47K"}
-                  description={"Pending Integration to eoxegen"}
-                  img={"/icons/pending-integration.svg"}
-                  link={"/DocumentDetails"}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DBCard
-                  title={"452"}
-                  description={"Integration Error"}
-                  img={"/icons/error.svg"}
-                  link={"/DocumentDetails"}
-                  hoverImage={"/icons/error-white.svg"}
-                />
-              </SwiperSlide>
+              {swiperData.map((item, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <DBCard
+                      title={item.title}
+                      description={item.description}
+                      img={item.img}
+                      link={item.link}
+                      hoverImage={item.hoverImage}
+                    />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
             <div className="section2">
               <div className="row">
@@ -135,23 +103,34 @@ export default function AdminDashboard() {
                       <div className="process">
                         <div className="line">
                           <span className="days">1 Days</span>
-                          <img src="/icons/avg-tat-analysis/file.svg" alt="" />
+                          <Image
+                            height={48}
+                            width={48}
+                            src="/icons/avg-tat-analysis/file.svg"
+                            alt=""
+                          />
                         </div>
                         <div className="line">
                           <span className="days">2 Days</span>
-                          <img
+                          <Image
+                            height={48}
+                            width={48}
                             src="/icons/avg-tat-analysis/upload.svg"
                             alt=""
                           />
                         </div>
                         <div className="line">
                           <span className="days">5 Days</span>
-                          <img
+                          <Image
+                            height={48}
+                            width={48}
                             src="/icons/avg-tat-analysis/adjudicated.svg"
                             alt=""
                             className="first-image"
                           />
-                          <img
+                          <Image
+                            height={48}
+                            width={48}
                             src="/icons/avg-tat-analysis/payment.svg"
                             alt=""
                           />
@@ -173,66 +152,18 @@ export default function AdminDashboard() {
                 <div className="col-md-12 col-lg-4">
                   <h6 className="heading">Recent Activity</h6>
                   <ul className="recent-activity">
-                    <li>
-                      <div className="description">
-                        <h4 className="name">M.P Shaha</h4>
-                        <p className="info">Document Uploaded</p>
-                      </div>
-                      <div className="date-time">
-                        <p className="date">20 April 2024</p>
-                        <span className="time">1.30 PM</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="description">
-                        <h4 className="name">M.P Shaha</h4>
-                        <p className="info">Document Uploaded</p>
-                      </div>
-                      <div className="date-time">
-                        <p className="date">20 April 2024</p>
-                        <span className="time">1.30 PM</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="description">
-                        <h4 className="name">M.P Shaha</h4>
-                        <p className="info">Document Uploaded</p>
-                      </div>
-                      <div className="date-time">
-                        <p className="date">20 April 2024</p>
-                        <span className="time">1.30 PM</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="description">
-                        <h4 className="name">M.P Shaha</h4>
-                        <p className="info">Document Uploaded</p>
-                      </div>
-                      <div className="date-time">
-                        <p className="date">20 April 2024</p>
-                        <span className="time">1.30 PM</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="description">
-                        <h4 className="name">M.P Shaha</h4>
-                        <p className="info">Document Uploaded</p>
-                      </div>
-                      <div className="date-time">
-                        <p className="date">20 April 2024</p>
-                        <span className="time">1.30 PM</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="description">
-                        <h4 className="name">M.P Shaha</h4>
-                        <p className="info">Document Uploaded</p>
-                      </div>
-                      <div className="date-time">
-                        <p className="date">20 April 2024</p>
-                        <span className="time">1.30 PM</span>
-                      </div>
-                    </li>
+                    {recentActivity.map((item, index) => (
+                      <li key={item.name + index}>
+                        <div className="description">
+                          <h4 className="name">{item.name}</h4>
+                          <p className="info">{item.info}</p>
+                        </div>
+                        <div className="date-time">
+                          <p className="date">{item.date}</p>
+                          <span className="time">{item.time}</span>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -304,42 +235,18 @@ export default function AdminDashboard() {
                                 <span>Claim Provider</span>
                               </div>
                             </li>
-                            <li>
-                              <div className="provider-detail">
-                                <span className="provider-name">M.P Shaha</span>
-                                <span className="provider-value">100</span>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="provider-detail">
-                                <span className="provider-name">M.P Shaha</span>
-                                <span className="provider-value">100</span>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="provider-detail">
-                                <span className="provider-name">M.P Shaha</span>
-                                <span className="provider-value">100</span>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="provider-detail">
-                                <span className="provider-name">M.P Shaha</span>
-                                <span className="provider-value">100</span>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="provider-detail">
-                                <span className="provider-name">M.P Shaha</span>
-                                <span className="provider-value">100</span>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="provider-detail">
-                                <span className="provider-name">M.P Shaha</span>
-                                <span className="provider-value">100</span>
-                              </div>
-                            </li>
+                            {recentActivity.map((item, index) => (
+                              <li key={item.name + index}>
+                                <div className="provider-detail">
+                                  <span className="provider-name">
+                                    {item.name}
+                                  </span>
+                                  <span className="provider-value">
+                                    {item.value}
+                                  </span>
+                                </div>
+                              </li>
+                            ))}
                             <li>
                               <div className="provider-detail">
                                 <span className="provider-name">

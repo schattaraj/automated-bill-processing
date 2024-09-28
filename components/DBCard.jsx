@@ -11,10 +11,7 @@ export default function DBCard({
 }) {
   return elementAsLink ? (
     <>
-      <Link
-        href={{ pathname: link, query: { label: description } }}
-        className="db-card"
-      >
+      <Link href={link} className="db-card">
         <div className="text">
           <h6>{title}</h6>
           <span>{description}</span>

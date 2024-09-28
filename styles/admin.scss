@@ -307,7 +307,8 @@ h6.admin-chart-heading {
   cursor: pointer;
 }
 
-.provider-detail-container {
+.provider-detail-container,
+.document-details {
   .provider-details-section {
     margin-bottom: 20px;
     .provider-card {
@@ -405,31 +406,47 @@ h6.admin-chart-heading {
   }
 
   .list-table {
+    ::-webkit-scrollbar {
+      display: unset;
+    }
     margin-top: 40px;
-    .table {
-      thead {
-        th {
-          font-size: 12px;
-          text-align: center;
-          text-wrap: nowrap;
-          padding: 4px;
-          background-color: transparent;
-          color: black;
+    .table-responsive {
+      .table {
+        thead {
+          th {
+            font-size: 12px;
+            text-align: center;
+            text-wrap: nowrap;
+            padding: 4px;
+            background-color: transparent;
+            color: black;
+            border-bottom: 0;
+          }
         }
-      }
 
-      tbody {
-        td {
-          font-size: 12px;
-          text-wrap: nowrap;
-          padding: 24px 16px;
-          background-color: transparent;
-          border-bottom: 4px solid transparent;
-          position: relative;
-          background-color: #fff;
-          text-align: center;
-          font-weight: 600;
-          color: $darkGray;
+        tbody {
+          tr {
+            border-radius: 10px;
+            a {
+              text-decoration: none;
+              display: contents;
+            }
+            td {
+              font-size: 12px;
+              text-wrap: nowrap;
+              padding: 24px 16px;
+              background-color: transparent;
+              border-bottom: 4px solid transparent;
+              position: relative;
+              background-color: #fff;
+              text-align: center;
+              font-weight: 600;
+              color: $darkGray;
+              img{
+                margin-right: 10px;
+              }
+            }
+          }
         }
       }
     }

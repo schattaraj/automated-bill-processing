@@ -154,3 +154,88 @@ export const documentIntegratedOption = {
     },
   ],
 };
+
+export const swiperData = [
+  {
+    title: "12.5K",
+    description: "Document Processed",
+    img: "/icons/file.svg",
+    link: "/AdminDashboard/Document Processed",
+  },
+  {
+    title: "20K",
+    description: "Awating processing",
+    img: "/icons/processing.svg",
+    link: "/AdminDashboard/Awating processing",
+  },
+  {
+    title: "1.8K",
+    description: "Processing Error",
+    img: "/icons/alert.svg",
+    link: "/AdminDashboard/Processing Error",
+  },
+  {
+    title: "8.56K",
+    description: "Integrated To Eoxegen",
+    img: "/icons/integrated.svg",
+    link: "/AdminDashboard/Integrated To Eoxegen",
+  },
+  {
+    title: "5.47K",
+    description: "Pending Integration to eoxegen",
+    img: "/icons/pending-integration.svg",
+    link: "/AdminDashboard/Pending Integration to eoxegen",
+  },
+  {
+    title: "452K",
+    description: "Integration Error",
+    img: "/icons/error.svg",
+    link: "/AdminDashboard/Integration Error",
+    hoverImage: "/icons/error-white.svg",
+  },
+];
+
+export const recentActivity = [
+  {
+    name: "M.P Shaha",
+    info: "Document Uploaded",
+    date: "20 April 2024",
+    time: "1.30 PM",
+    value: "100",
+  },
+  {
+    name: "M.P Shaha",
+    info: "Document Uploaded",
+    date: "20 April 2024",
+    time: "1.30 PM",
+    value: "100",
+  },
+  {
+    name: "M.P Shaha",
+    info: "Document Uploaded",
+    date: "20 April 2024",
+    time: "1.30 PM",
+    value: "100",
+  },
+  {
+    name: "M.P Shaha",
+    info: "Document Uploaded",
+    date: "20 April 2024",
+    time: "1.30 PM",
+    value: "100",
+  },
+  {
+    name: "M.P Shaha",
+    info: "Document Uploaded",
+    date: "20 April 2024",
+    time: "1.30 PM",
+    value: "100",
+  },
+  {
+    name: "M.P Shaha",
+    info: "Document Uploaded",
+    date: "20 April 2024",
+    time: "1.30 PM",
+    value: "100",
+  },
+];
