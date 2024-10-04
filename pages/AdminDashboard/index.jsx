@@ -9,7 +9,7 @@ import DBCard from "@/components/DBCard";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/BarChart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import LineChart from "@/components/LineChart";
@@ -21,7 +21,11 @@ import {
   recentActivity,
 } from "@/utils/constants";
 import Image from "next/image";
-import CustomBreadcrumb from "@/components/CustomBreadcrumb";
+import dynamic from "next/dynamic";
+// import DashBoardMap from "@/components/DashBoardMap";
+const DashboardMap = dynamic(() => import("@/components/DashBoardMap"), {
+  ssr: false,
+});
 export default function AdminDashboard() {
   const [providerCountry, setProviderCountry] = useState(0);
 
@@ -171,23 +175,37 @@ export default function AdminDashboard() {
             <div className="chart-area">
               <div className="row">
                 <div className="col-md-12 col-lg-7">
-                  <div className="claim-settlement card admin-card">
-                    <div className="flex">
-                      <h6 className="admin-chart-heading">
-                        Source Of Documents Upload/Received
-                      </h6>
-                      <KeyboardArrowRight />
+                  <Link
+                    className="text-none"
+                    href={
+                      "/AdminDashboard/Source Of Documents Upload/DocumentUpload"
+                    }
+                  >
+                    <div className="claim-settlement card admin-card">
+                      <div className="flex">
+                        <h6 className="admin-chart-heading">
+                          Source Of Documents Upload/Received
+                        </h6>
+                        <KeyboardArrowRight />
+                      </div>
+                      <LineChart options={sourceOfDocumentOptions} />
                     </div>
-                    <LineChart options={sourceOfDocumentOptions} />
-                  </div>
+                  </Link>
                 </div>
                 <div className="col-md-12 col-lg-5">
-                  <div className="card admin-card document-integrated">
-                    <h6 className="admin-chart-heading">
-                      Documents Integrated in Month
-                    </h6>
-                    <BarChart options={documentIntegratedOption} />
-                  </div>
+                  <Link
+                    className="text-none"
+                    href={
+                      "/AdminDashboard/Document Integrated in month/DocumentIntegrated"
+                    }
+                  >
+                    <div className="card admin-card document-integrated">
+                      <h6 className="admin-chart-heading">
+                        Documents Integrated in Month
+                      </h6>
+                      <BarChart options={documentIntegratedOption} />
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -200,14 +218,18 @@ export default function AdminDashboard() {
                         <h6 className="heading admin-chart-heading">
                           Provider Empaneled
                         </h6>
-                        <Link className="empaneled-link" href={"/"}>
+                        <Link
+                          className="empaneled-link"
+                          href={"/AdminDashboard/ProviderEmpaneled/"}
+                        >
                           View All
                         </Link>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-12 col-lg-8">
-                        <img className="climate-image" src="/icons/map.svg" />
+                        {/* <img className="climate-image" src="/icons/map.svg" /> */}
+                        <DashboardMap />
                       </div>
                       <div className="col-md-12 col-lg-4">
                         <div className="list-area">

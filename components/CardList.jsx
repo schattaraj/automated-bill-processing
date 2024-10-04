@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ListTable from './ListTable'
 import Dropdown from 'react-bootstrap/Dropdown';
 import FolderList from './FolderList';
+import { months } from '@/utils/constants';
 
 function CardList({table, heading, tableColumns, tableData,folderList }) {
   const [selectedMonth, setSelectedMonth] = useState("");
@@ -10,10 +11,6 @@ function CardList({table, heading, tableColumns, tableData,folderList }) {
     setSelectedMonth(month);
   };
 
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
   return (
     <>
       <div className="card list-area">

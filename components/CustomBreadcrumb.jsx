@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const CustomBreadcrumb = () => {
+const CustomBreadcrumb = ({removeLastCrumb=false}) => {
   const router = useRouter();
-  const pathArray = router.asPath.split('/').filter(path => path);
-
+  const cleanPath = router.asPath.split('?')[0];
+  const pathArray = cleanPath.split('/').filter(path => path);
+  if(removeLastCrumb && pathArray.length > 1) pathArray.pop();
   const toNormalCase = (str) => {
     return str
       .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before capital letters

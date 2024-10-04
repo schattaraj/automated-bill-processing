@@ -155,6 +155,138 @@ export const documentIntegratedOption = {
   ],
 };
 
+export const pendingDocuments = {
+  chart: {
+    type: "column",
+    height: 350, // Increase height of the chart
+  },
+  title: {
+    text: "",
+  },
+
+  xAxis: {
+    categories: ["1st Week", "2nd Week", "3rd week", "4th week", "5th week"],
+    title: {
+      text: "",
+    },
+    labels: {
+      style: {
+        fontSize: "10px", // Set your desired font size here
+      },
+    },
+    gridLineWidth: 0,
+  },
+  yAxis: {
+    min: 0,
+    max: 800,
+    title: {
+      text: "",
+    },
+    tickInterval: 100,
+    labels: {
+      overflow: "justify",
+      formatter: function () {
+        return this.value; // Format y-axis labels
+      },
+    },
+    gridLineWidth: 0,
+    lineWidth: 1,
+  },
+  legend: {
+    layout: "horizontal",
+    align: "right",
+    verticalAlign: "top",
+    itemStyle: {
+      fontWeight: "bold",
+    },
+    y: 5,
+    itemMarginBottom: 10, // Space between legend items
+  },
+  plotOptions: {
+    column: {
+      grouping: true,
+      pointPadding: 0, // Decrease the gap between bars
+      borderWidth: 0,
+      borderWidth: 0,
+      borderRadius: 0,
+    },
+  },
+  series: [
+    {
+      name: "Pending",
+      data: [256, 190, 115, 100, ""],
+      color: "#F18701",
+    },
+    {
+      name: "Error",
+      data: [105,90,50, 70, ""],
+      color: "#F30808",
+    },
+  ],
+};
+
+export const uploadDocumentSource = {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: "pie",
+  },
+  title: {
+    text: "",
+  },
+  tooltip: {
+    pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+    itemStyle: {
+      fontWeight: "bold",
+    },
+    y: 5,
+    itemMarginBottom: 10, // Space between legend items
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: "pointer",
+      dataLabels: {
+        enabled: false,
+      },
+      showInLegend: true,
+    },
+  },
+  series: [
+    {
+      name: "Brands",
+      colorByPoint: true,
+      data: [
+        {
+          name: "By Hospital",
+          y: 45,
+          color: "#03045E",
+        },
+        {
+          name: "Received By email",
+          y: 45,
+          color: "#00B33C",
+        },
+        {
+          name: "By Internal Team",
+          y: 20,
+          color: "#F30808",
+        },
+        {
+          name: "FTP Upload",
+          y: 10,
+          color: "#3A7CFF",
+        },
+      ],
+    },
+  ],
+};
 export const swiperData = [
   {
     title: "12.5K",
@@ -238,4 +370,19 @@ export const recentActivity = [
     time: "1.30 PM",
     value: "100",
   },
+];
+
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];

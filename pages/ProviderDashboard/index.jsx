@@ -10,17 +10,13 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/BarChart";
 import { useState } from "react";
+import { months } from "@/utils/constants";
 export default function ProviderDashboard() {
   const [selectedMonth, setSelectedMonth] = useState(null);
   const handleChange = (event) => {
     const month = event.target.value;
     setSelectedMonth(month);
   };
-
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
   const claimSettlementOption = {
     chart: {
       type: 'column',

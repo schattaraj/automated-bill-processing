@@ -306,9 +306,14 @@ h6.admin-chart-heading {
 .linked-document {
   cursor: pointer;
 }
-
+.areaHidden {
+  display: none;
+}
 .provider-detail-container,
-.document-details {
+.document-details,
+.empaneled-list,
+.document-upload,
+.document-integrated {
   .provider-details-section {
     margin-bottom: 20px;
     .provider-card {
@@ -355,6 +360,13 @@ h6.admin-chart-heading {
       min-width: 30%;
       min-height: 50%;
       margin: 10px auto;
+      @media (max-width: 1200px) {
+        min-width: auto;
+        min-height: auto;
+      }
+      @media (max-width:992px) {
+        margin-right: 10px;
+      }
       @media (max-width: 606px) {
         min-width: auto;
         min-height: auto;
@@ -398,6 +410,8 @@ h6.admin-chart-heading {
     }
     @media (max-width: 992px) {
       margin-top: 20px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
     }
     @media (max-width: 606px) {
       flex-wrap: nowrap;
@@ -442,7 +456,7 @@ h6.admin-chart-heading {
               text-align: center;
               font-weight: 600;
               color: $darkGray;
-              img{
+              img {
                 margin-right: 10px;
               }
             }
@@ -450,5 +464,15 @@ h6.admin-chart-heading {
         }
       }
     }
+  }
+}
+
+.text-none {
+  text-decoration: none;
+}
+.document-upload {
+  .card {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #d9d9d9;
   }
 }
