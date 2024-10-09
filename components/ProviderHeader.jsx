@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function ProviderHeader() {
@@ -18,6 +18,25 @@ function ProviderHeader() {
             }, 1000); // Duration of the animation
         }
     }
+    const handleResize = () => {
+        if (window.innerWidth < 992) {
+            menuRef.current.style.overflow = "hidden";
+        } else {
+            menuRef.current.style.overflow = ""; 
+        }
+    };
+    useEffect(() => {
+        // Initial check on mount
+        handleResize();
+
+        // Set up resize event listener
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup event listener on unmount
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
         <>
             <div className="provider-header">
@@ -28,7 +47,7 @@ function ProviderHeader() {
                         <div className={`actions ${showActions ? "show" : ""}`}
                         style={{
                             height: showActions ? `${menuRef.current.scrollHeight}px` : '0',
-                            overflow: 'hidden',
+                            // overflow: 'hidden', 
                             transition: 'height 0.3s ease' // Smooth transition
                         }}
                         ref={menuRef}
@@ -43,7 +62,7 @@ function ProviderHeader() {
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown className='profile'>
-                                <Dropdown.Toggle variant="white" id="dropdown-basic">
+                                <Dropdown.Toggle variant="white" id="dropdown-basic2">
                                     <img src="/images/user.png" alt="" className='profile-image' />
                                     <div className="info">
                                         <h6>AGA Khan</h6>
