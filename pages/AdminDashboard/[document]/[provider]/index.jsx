@@ -227,7 +227,7 @@ const Index = () => {
               </div>
               <div className="col-xl-8 col-lg-8 col-md-12">
                 <div className="provider-document-status">
-                  {swiperData.map((item, I) => (
+                  {swiperData.map((item, index) => (
                     <SwiperSlide key={item.title + index}>
                       <DBCard
                         title={item.title}
