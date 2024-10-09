@@ -47,7 +47,6 @@ const Index = () => {
       ]
     : [
         { elementName: "providerName", displayName: "Provider Name" },
-        { elementName: "country", displayName: "Country" },
         { elementName: "contactNo", displayName: "Contact Number" },
         { elementName: "address", displayName: "Address" },
         { elementName: "providerId", displayName: "Provider Id" },
@@ -204,7 +203,6 @@ const Index = () => {
       <div className="provider-detail-container">
         <div className="container">
           <CustomBreadcrumb />
-          {/* <AdminMenu label="A.H.Hospital" path="/ProviderDetails" /> */}
           <div className="provider-details-section">
             <div className="row">
               <div className="col-xl-4 col-lg-4 col-md-12">
@@ -227,7 +225,7 @@ const Index = () => {
               </div>
               <div className="col-xl-8 col-lg-8 col-md-12">
                 <div className="provider-document-status">
-                  {swiperData.map((item, I) => (
+                  {swiperData.map((item, index) => (
                     <SwiperSlide key={item.title + index}>
                       <DBCard
                         title={item.title}

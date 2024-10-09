@@ -364,7 +364,7 @@ h6.admin-chart-heading {
         min-width: auto;
         min-height: auto;
       }
-      @media (max-width:992px) {
+      @media (max-width: 992px) {
         margin-right: 10px;
       }
       @media (max-width: 606px) {
@@ -467,6 +467,67 @@ h6.admin-chart-heading {
   }
 }
 
+.profile,
+.setting {
+  .profile-base,
+  .setting-base {
+    background-color: #39409a0a;
+    min-height: 100vh;
+    padding: 2rem;
+    .avatar-card {
+      background-color: white;
+      width: 100%;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    .profile-content {
+      text-align: center;
+      .MuiTypography-root {
+        &:first-child {
+          padding: 1rem;
+        }
+        padding-bottom: 1rem;
+      }
+      button {
+        margin: 1rem;
+        background-color: #e7e7e7;
+        color: #000;
+        font-weight: 600;
+      }
+    }
+    .setting-menus {
+      margin-bottom: 20px;
+      button {
+        font-size: smaller;
+        &.inactive {
+          color: rgba($text, 1);
+        }
+        &.active {
+          color: rgba($primary, 1);
+        }
+      }
+    }
+    .form-switch {
+      display: flex !important;
+      justify-content: space-between !important;
+      flex-direction: row-reverse !important;
+      > input {
+        margin-top: 0 !important;
+        width: 3rem !important;
+        height: 1.5rem;
+      }
+      > label {
+        font-size: 0.875rem;
+      }
+    }
+    .th-primary {
+      th {
+        color: $primary;
+      }
+    }
+  }
+}
+
 .text-none {
   text-decoration: none;
 }
@@ -475,4 +536,10 @@ h6.admin-chart-heading {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     border: 1px solid #d9d9d9;
   }
+}
+
+.views-bar {
+  background-color: $primary; /* Adjust color for the bar */
+  height: 10px;
+  display: inline-block;
 }

@@ -1,7 +1,10 @@
-import { IconButton } from "@mui/material";
-import Dropdown from "react-bootstrap/Dropdown";
 import { Menu } from "@mui/icons-material";
-const AdminHeader = () => {
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+import Dropdown from "react-bootstrap/Dropdown";
+
+const CountryheadHeader = () => {
   const countries = [
     "All",
     "Kenya",
@@ -10,6 +13,9 @@ const AdminHeader = () => {
     "Ethiopia",
     "Rwanda",
   ];
+  const router = useRouter();
+  // console.log(router.pathname);
+
   return (
     <>
       <div className="admin-header">
@@ -47,15 +53,15 @@ const AdminHeader = () => {
                     </div>
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item as={Link} to={`${router.pathname}/Profile`}>
                       <img src="/icons/profile-actions/person.svg" alt="" />
                       <span>My Profile</span>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item href={`${router.pathname}/Settings`}>
                       <img src="/icons/profile-actions/settings.svg" alt="" />
                       <span>Setting</span>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item href="/Login">
                       <img src="/icons/profile-actions/logout.svg" alt="" />
                       <span>Logout</span>
                     </Dropdown.Item>
@@ -90,15 +96,15 @@ const AdminHeader = () => {
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">
+                  <Dropdown.Item href={`${router.pathname}/Profile`}>
                     <img src="/icons/profile-actions/person.svg" alt="" />
                     <span>My Profile</span>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
+                  <Dropdown.Item href={`${router.pathname}/Setting`}>
                     <img src="/icons/profile-actions/settings.svg" alt="" />
                     <span>Setting</span>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
+                  <Dropdown.Item href={`/Login`}>
                     <img src="/icons/profile-actions/logout.svg" alt="" />
                     <span>Logout</span>
                   </Dropdown.Item>
@@ -112,4 +118,4 @@ const AdminHeader = () => {
   );
 };
 
-export default AdminHeader;
+export default CountryheadHeader;

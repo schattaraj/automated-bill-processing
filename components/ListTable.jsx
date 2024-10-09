@@ -1,30 +1,35 @@
-const ListTable = ({columnNames,data}) => {
+const ListTable = ({ columnNames, data }) => {
   return (
     <>
-    <div className="list-table">
-    <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                  <tr>
-                    {
-                    columnNames.map((item,index)=>{
-                        return <th key={"thead"+index}>{item?.displayName}</th>
-                    })
-                    }
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {                     
-                      data.map((item,index)=>{
-                        return <tr key={"tbody"+index}>{
-                           columnNames.map((innerItem,index)=>{
-                        return <td key={"td"+index}>{innerItem?.elementName == "name" && <img src="/icons/pdf.svg"/>}{item[innerItem?.elementName]}</td>
-                    })
-                          }</tr>
-                      })
-                    }
-                  </tbody>
-                  {/* <tbody>
+      <div className="list-table">
+        <div className="table-responsive">
+          <table className="table">
+            <thead>
+              <tr>
+                {columnNames.map((item, index) => {
+                  return <th key={"thead" + index}>{item?.displayName}</th>;
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => {
+                return (
+                  <tr key={"tbody" + index}>
+                    {columnNames.map((innerItem, index) => {
+                      return (
+                        <td key={"td" + index}>
+                          {innerItem?.elementName == "name" && (
+                            <img src="/icons/pdf.svg" />
+                          )}
+                          {item[innerItem?.elementName]}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+            {/* <tbody>
                     <tr>
                       <td>Patrika Mumbi Gacukia</td>
                       <td>43</td>
@@ -156,11 +161,11 @@ const ListTable = ({columnNames,data}) => {
                       <td>Self</td>
                     </tr>
                   </tbody> */}
-                </table>
-              </div>
-    </div>
+          </table>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default ListTable
+export default ListTable;

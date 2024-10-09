@@ -14,8 +14,8 @@ const SwiperDetails = () => {
   useEffect(() => {
     setName(router?.query?.document);
   }, [router]);
+
   const tableColumn = [
-    { elementName: "country", displayName: "Country" },
     { elementName: "providerName", displayName: "Provider Name" },
     { elementName: "providerId", displayName: "Provider Id" },
     { elementName: "totalDocuments", displayName: "Total Documents" },
@@ -24,7 +24,6 @@ const SwiperDetails = () => {
   ];
   const tableData = [
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       totalDocuments: "5632",
@@ -32,7 +31,6 @@ const SwiperDetails = () => {
       "": <KeyboardArrowRight />,
     },
     {
-      country: "Rwanda",
       providerName: "A.H Hospital",
       providerId: "25598",
       totalDocuments: "5632",
@@ -40,7 +38,6 @@ const SwiperDetails = () => {
       "": <KeyboardArrowRight />,
     },
     {
-      country: "Tanzania",
       providerName: "ABC Healthcare",
       providerId: "25598",
       totalDocuments: "5632",
@@ -48,7 +45,6 @@ const SwiperDetails = () => {
       "": <KeyboardArrowRight />,
     },
     {
-      country: "Ethiopia",
       providerName: "ABC Healthcare",
       providerId: "25598",
       totalDocuments: "5632",
@@ -56,7 +52,6 @@ const SwiperDetails = () => {
       "": <KeyboardArrowRight />,
     },
     {
-      country: "Uganda",
       providerName: "ABC Healthcare",
       providerId: "25598",
       totalDocuments: "5632",
@@ -64,7 +59,6 @@ const SwiperDetails = () => {
       "": <KeyboardArrowRight />,
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       totalDocuments: "5632",
@@ -94,7 +88,8 @@ const SwiperDetails = () => {
               tableColumns={tableColumn}
               data={tableData}
               dataColors={dataColors}
-              urlBase={"AdminDashboard"}
+              urlBase={"CountryheadDashboard"}
+
             />
           </Box>
         </div>

@@ -18,6 +18,7 @@ const ProviderList = ({
   documentStatus = [],
   areaHidden,
   displayAsLink = true,
+  urlBase,
 }) => {
   const router = useRouter();
   const path = router.asPath.split("/").pop();
@@ -68,7 +69,7 @@ const ProviderList = ({
                       <Link
                         style={{ pointerEvents: !displayAsLink && "none" }}
                         className="item"
-                        href={`/AdminDashboard/${path}/${item["providerName"]}${
+                        href={`/${urlBase}/${path}/${item["providerName"]}${
                           tableFor && `?type=${tableFor}`
                         }`}
                       >
@@ -86,6 +87,19 @@ const ProviderList = ({
                               ? matchedColor.color
                               : "";
                           }
+                          if (innerItem.elementName === "documentStatus") {
+                            const matchedColor = dataColors.find(
+                              (colorItem) =>
+                                colorItem.documentStatus ===
+                                innerItem.displayName
+                            );
+                            sourceColor = matchedColor
+                              ? matchedColor.color
+                              : "";
+                          }
+                          if (innerItem.color) {
+                            sourceColor = innerItem.color;
+                          }
                           return (
                             <td
                               key={"td" + index}
@@ -94,9 +108,16 @@ const ProviderList = ({
                                   innerItem.elementName ===
                                   "documentUploadSource"
                                     ? sourceColor
+                                    : innerItem.elementName === "documentStatus"
+                                    ? sourceColor
+                                    : sourceColor
+                                    ? sourceColor
                                     : "",
                               }}
                             >
+                              {innerItem?.elementName == "name" && (
+                                <img src="/icons/pdf.svg" />
+                              )}
                               {innerItem?.elementName == "country" && (
                                 <Image
                                   width={40}

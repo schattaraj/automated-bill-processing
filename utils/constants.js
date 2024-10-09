@@ -326,6 +326,45 @@ export const swiperData = [
     hoverImage: "/icons/error-white.svg",
   },
 ];
+export const swiperDataCountryHead = [
+  {
+    title: "12.5K",
+    description: "Document Processed",
+    img: "/icons/file.svg",
+    link: "/CountryheadDashboard/Document Processed",
+  },
+  {
+    title: "20K",
+    description: "Awating processing",
+    img: "/icons/processing.svg",
+    link: "/CountryheadDashboard/Awating processing",
+  },
+  {
+    title: "1.8K",
+    description: "Processing Error",
+    img: "/icons/alert.svg",
+    link: "/CountryheadDashboard/Processing Error",
+  },
+  {
+    title: "8.56K",
+    description: "Integrated To Eoxegen",
+    img: "/icons/integrated.svg",
+    link: "/CountryheadDashboard/Integrated To Eoxegen",
+  },
+  {
+    title: "5.47K",
+    description: "Pending Integration to Eoxegen",
+    img: "/icons/pending-integration.svg",
+    link: "/CountryheadDashboard/Pending Integration to Eoxegen",
+  },
+  {
+    title: "452K",
+    description: "Integration Error",
+    img: "/icons/error.svg",
+    link: "/CountryheadDashboard/Integration Error",
+    hoverImage: "/icons/error-white.svg",
+  },
+];
 
 export const recentActivity = [
   {
@@ -336,7 +375,7 @@ export const recentActivity = [
     value: "100",
   },
   {
-    name: "M.P Shaha",
+    name: "AGK Khan",
     info: "Document Uploaded",
     date: "20 April 2024",
     time: "1.30 PM",

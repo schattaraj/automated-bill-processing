@@ -20,7 +20,6 @@ const ProviderEmpaneled = () => {
   }, [router]);
   const tableColumn = [
     { elementName: "providerName", displayName: "Provider Name" },
-    { elementName: "country", displayName: "Country" },
     { elementName: "contactNo", displayName: "Contact Number" },
     { elementName: "address", displayName: "Address" },
     { elementName: "providerId", displayName: "Provider Id" },
@@ -28,7 +27,6 @@ const ProviderEmpaneled = () => {
   ];
   const tableData = [
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -36,7 +34,6 @@ const ProviderEmpaneled = () => {
       addInNetwork: "20 jun 23",
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -44,7 +41,6 @@ const ProviderEmpaneled = () => {
       addInNetwork: "20 jun 23",
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -52,7 +48,6 @@ const ProviderEmpaneled = () => {
       addInNetwork: "20 jun 23",
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -60,7 +55,6 @@ const ProviderEmpaneled = () => {
       addInNetwork: "20 jun 23",
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -68,7 +62,6 @@ const ProviderEmpaneled = () => {
       addInNetwork: "20 jun 23",
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -76,7 +69,6 @@ const ProviderEmpaneled = () => {
       addInNetwork: "20 jun 23",
     },
     {
-      country: "Kenya",
       providerName: "ABC Healthcare",
       providerId: "25598",
       contactNo: "+254 221454654 A.h hospotal@gmail.com",
@@ -99,7 +91,7 @@ const ProviderEmpaneled = () => {
               data={tableData}
               isSortBy={true}
               tableFor="providerEmpaneled"
-              urlBase={"AdminDashboard"}
+              urlBase={"CountryheadDashboard"}
             />
           </Box>
         </div>
