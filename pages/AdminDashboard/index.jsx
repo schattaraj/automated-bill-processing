@@ -22,11 +22,12 @@ import {
 } from "@/utils/constants";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import withAuth from "@/components/withAuth";
 // import DashBoardMap from "@/components/DashBoardMap";
 const DashboardMap = dynamic(() => import("@/components/DashBoardMap"), {
   ssr: false,
 });
-export default function AdminDashboard() {
+const  AdminDashboard = () => {
   const [providerCountry, setProviderCountry] = useState(0);
 
   const handleNext = () => {
@@ -305,3 +306,4 @@ export default function AdminDashboard() {
     </>
   );
 }
+export default withAuth(AdminDashboard, ['ADMIN']); 

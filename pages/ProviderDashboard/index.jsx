@@ -11,7 +11,8 @@ import Footer from "@/components/Footer";
 import BarChart from "@/components/BarChart";
 import { useState } from "react";
 import { months } from "@/utils/constants";
-export default function ProviderDashboard() {
+import withAuth from "@/components/withAuth";
+function ProviderDashboard() {
   const [selectedMonth, setSelectedMonth] = useState(null);
   const handleChange = (event) => {
     const month = event.target.value;
@@ -497,3 +498,5 @@ export default function ProviderDashboard() {
     </>
   )
 }
+
+export default withAuth(ProviderDashboard, ['PROVIDER']);

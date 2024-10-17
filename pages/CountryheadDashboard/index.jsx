@@ -22,6 +22,7 @@ import {
 } from "@/utils/constants";
 import dynamic from "next/dynamic";
 import { Navigation } from "swiper/modules";
+import withAuth from "@/components/withAuth";
 // import DashBoardMap from "@/components/DashBoardMap";
 const DashboardMap = dynamic(() => import("@/components/DashBoardMap"), {
   ssr: false,
@@ -304,4 +305,4 @@ const CountryheadDashboard = () => {
   );
 };
 
-export default CountryheadDashboard;
+export default withAuth(CountryheadDashboard,['COUNTRY_HEAD']);
