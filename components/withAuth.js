@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { decodeJWT } from '@/utils/utils';
-
+/* eslint-disable-next-line react/display-name */
 const withAuth = (WrappedComponent, allowedRoles = []) => {
   return (props) => {
     const router = useRouter();
