@@ -48,6 +48,9 @@ const withAuth = (WrappedComponent, allowedRoles = []) => {
 
     return <WrappedComponent {...props} />;
   };
+  WithAuthComponent.displayName = `WithAuth(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+
+  return WithAuthComponent;
 };
 
 export default withAuth;
