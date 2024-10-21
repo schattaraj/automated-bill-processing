@@ -101,7 +101,7 @@ const AdminHeader = () => {
                     <img src="/icons/profile-actions/settings.svg" alt="" />
                     <span>Setting</span>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
+                  <Dropdown.Item href="#" onClick={()=>{handleLogout(router)}}>
                     <img src="/icons/profile-actions/logout.svg" alt="" />
                     <span>Logout</span>
                   </Dropdown.Item>
