@@ -1,7 +1,10 @@
 import { IconButton } from "@mui/material";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Menu } from "@mui/icons-material";
+import { useRouter } from "next/router";
+import { handleLogout } from "@/utils/logout";
 const AdminHeader = () => {
+  const router = useRouter()
   const countries = [
     "All",
     "Kenya",
@@ -55,7 +58,7 @@ const AdminHeader = () => {
                       <img src="/icons/profile-actions/settings.svg" alt="" />
                       <span>Setting</span>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item href="#" onClick={()=>{handleLogout(router)}}>
                       <img src="/icons/profile-actions/logout.svg" alt="" />
                       <span>Logout</span>
                     </Dropdown.Item>

@@ -1,3 +1,4 @@
+import { handleLogout } from "@/utils/logout";
 import { Menu } from "@mui/icons-material";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -104,7 +105,7 @@ const CountryheadHeader = () => {
                     <img src="/icons/profile-actions/settings.svg" alt="" />
                     <span>Setting</span>
                   </Dropdown.Item>
-                  <Dropdown.Item href={`/Login`}>
+                  <Dropdown.Item href={`#`} onClick={()=>{handleLogout(router)}}>
                     <img src="/icons/profile-actions/logout.svg" alt="" />
                     <span>Logout</span>
                   </Dropdown.Item>

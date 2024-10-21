@@ -1,3 +1,5 @@
+import { handleLogout } from '@/utils/logout';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -5,6 +7,7 @@ function ProviderHeader() {
     const [showActions, setShowActions] = useState(false)
     const [isAnimating, setIsAnimating] = useState(false);
     const menuRef = useRef(null); // Reference to the menu
+    const router = useRouter()
     const handleToggle = () => {
         if (showActions) {
             setShowActions(false)
@@ -72,7 +75,7 @@ function ProviderHeader() {
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="#/action-1"><img src="/icons/profile-actions/person.svg" alt="" /><span>My Profile</span></Dropdown.Item>
                                     <Dropdown.Item href="#/action-2"><img src="/icons/profile-actions/settings.svg" alt="" /><span>Setting</span></Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2"><img src="/icons/profile-actions/logout.svg" alt="" /><span>Logout</span></Dropdown.Item>
+                                    <Dropdown.Item href="#" onClick={()=>{handleLogout(router)}}><img src="/icons/profile-actions/logout.svg" alt="" /><span>Logout</span></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
