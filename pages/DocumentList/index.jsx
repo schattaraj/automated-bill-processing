@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import ProviderHeader from "../../components/ProviderHeader";
 import ProviderMenu from "../../components/ProviderMenu";
-import ListTable from "@/components/ListTable";
 import CardList from "@/components/CardList";
 import Footer from "@/components/Footer";
 import axios from "axios";
-import { error } from "highcharts";
 
 function DocumentList() {
-  const [tableData, setTableData] = useState([]);
-  // const [pageContent, setPageContent] = useState();
+  const [tableData, setTableData] = useState({ content: [], totalElements: 0 });
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
   const tableColumns = [
     { elementName: "fileUnqName", displayName: "Name" },
     { elementName: "modifiedDate", displayName: "Modified" },
@@ -121,20 +129,25 @@ function DocumentList() {
     const token = localStorage.getItem("token"); // Replace with actual key for the token
 
     axios
-      .get("https://invautomation.eo2cloud.com/api/v1/documents", {
-        headers: {
-          Authorization: `Bearer ${token}`, // Set authorization header
-          "Content-Type": "application/json", // Set content type
-        },
-      })
+      .get(
+        `https://invautomation.eo2cloud.com/api/v1/documents?page=${page}&size=${rowsPerPage}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Set authorization header
+            "Content-Type": "application/json", // Set content type
+          },
+        }
+      )
       .then((response) => {
-        setTableData(response.data.content);
+        setTableData({
+          content: response.data.content,
+          totalElements: response.data.totalElements,
+        });
       })
       .catch((error) => {
         return error;
       });
-  }, []);
-  console.log(tableData);
+  }, [page, rowsPerPage]);
 
   return (
     <>
@@ -147,7 +160,10 @@ function DocumentList() {
             heading={"Document List"}
             tableColumns={tableColumns}
             tableData={tableData}
-            // pageContent={pageContent}
+            handleChangePage={handleChangePage}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+            page={page}
+            rowsPerPage={rowsPerPage}
           />
         </div>
       </div>

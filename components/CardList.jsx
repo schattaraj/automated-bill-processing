@@ -11,21 +11,25 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  TablePagination,
 } from "@mui/material";
 import { FileDownload } from "@mui/icons-material";
 
 function CardList({
-  // pageContent,
   table,
   heading,
   tableColumns,
   tableData,
   folderList,
+  handleChangePage,
+  handleChangeRowsPerPage,
+  page,
+  rowsPerPage,
 }) {
   const [selectedMonth, setSelectedMonth] = useState("");
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
-
-  const handleChange = (event) => {
+  const [sortBy, setSortBy] = useState("Ascending");
+  const handleChangeMonth = (event) => {
     const month = event.target.value;
     setSelectedMonth(month);
   };
@@ -55,6 +59,10 @@ function CardList({
       console.error("Error downloading the file:", error);
     }
   };
+
+  const handleSorting = (event) => {
+    setSortBy(event.target.value);
+  };
   return (
     <>
       <div className="card list-area">
@@ -63,12 +71,12 @@ function CardList({
           <div className="right">
             <div className="total">
               <span>Total</span>
-              <span>{tableData.length}</span>
+              <span>{tableData.totalElements}</span>
             </div>
             <select
               className="form-select"
               value={selectedMonth}
-              onChange={handleChange}
+              onChange={handleChangeMonth}
               style={{
                 padding: "8px 16px",
                 borderRadius: "4px",
@@ -102,7 +110,11 @@ function CardList({
             </select>
           )}
           {table && (
-            <select name="sort_by" className="form-select">
+            <select
+              name="sort_by"
+              className="form-select"
+              onChange={handleSorting}
+            >
               <option>Sort By</option>
               <option value="Ascending">Ascending</option>
               <option value="Decending">Decending</option>
@@ -142,8 +154,24 @@ function CardList({
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        {table && <ListTable columnNames={tableColumns} data={tableData} />}
+        {table && (
+          <ListTable
+            columnNames={tableColumns}
+            data={tableData}
+            selectedMonth={selectedMonth}
+            sortBy={sortBy}
+          />
+        )}
         {folderList && <FolderList items={folderList} />}
+        <TablePagination
+          className="table-pagination"
+          component="div"
+          count={tableData.totalElements}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
@@ -151,7 +179,7 @@ function CardList({
         </Modal.Header>
         <Modal.Body>
           <List>
-            {tableData.map((file) => (
+            {tableData.content.map((file) => (
               <ListItem disablePadding key={file.id}>
                 <ListItemButton
                   onClick={() => handleDownload(file.id, file.fileUnqName)}

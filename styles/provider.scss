@@ -782,6 +782,11 @@ body {
         }
       }
     }
+    .MuiTablePagination-root {
+      .MuiTablePagination-toolbar {
+        align-items: baseline;
+      }
+    }
     @media (max-width: 767.98px) {
       .actions {
         .form-control.search {
