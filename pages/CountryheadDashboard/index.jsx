@@ -305,4 +305,4 @@ const CountryheadDashboard = () => {
   );
 };
 
-export default withAuth(CountryheadDashboard,['COUNTRY_HEAD']);
+export default withAuth(CountryheadDashboard, ["COUNTRY_HEAD"]);

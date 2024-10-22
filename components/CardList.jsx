@@ -1,16 +1,60 @@
-import React, { useState } from 'react'
-import ListTable from './ListTable'
-import Dropdown from 'react-bootstrap/Dropdown';
-import FolderList from './FolderList';
-import { months } from '@/utils/constants';
+import React, { useState } from "react";
+import ListTable from "./ListTable";
+import Dropdown from "react-bootstrap/Dropdown";
+import FolderList from "./FolderList";
+import { months } from "@/utils/constants";
+import { Button, Modal } from "react-bootstrap";
+import axios from "axios";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { FileDownload } from "@mui/icons-material";
 
-function CardList({table, heading, tableColumns, tableData,folderList }) {
+function CardList({
+  // pageContent,
+  table,
+  heading,
+  tableColumns,
+  tableData,
+  folderList,
+}) {
   const [selectedMonth, setSelectedMonth] = useState("");
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
+
   const handleChange = (event) => {
     const month = event.target.value;
     setSelectedMonth(month);
   };
+  const handleExportClick = () => {
+    setShowModal(true); // Show the modal
+  };
+  const handleDownload = async (fileId, fileName) => {
+    const downloadUrl = `https://invautomation.eo2cloud.com/api/v1/documents/${fileId}/download`;
 
+    try {
+      const response = await axios.get(downloadUrl, {
+        responseType: "blob", // Set the response type to blob
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include your token if needed
+        },
+      });
+
+      // Create a blob URL for the downloaded file
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", fileName); // You can set the name dynamically here
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link); // Clean up the DOM
+    } catch (error) {
+      console.error("Error downloading the file:", error);
+    }
+  };
   return (
     <>
       <div className="card list-area">
@@ -19,25 +63,23 @@ function CardList({table, heading, tableColumns, tableData,folderList }) {
           <div className="right">
             <div className="total">
               <span>Total</span>
-              <span>554</span>
+              <span>{tableData.length}</span>
             </div>
             <select
               className="form-select"
               value={selectedMonth}
               onChange={handleChange}
               style={{
-                padding: '8px 16px',
-                borderRadius: '4px',
-                border: '1px solid #ccc',
-                cursor: 'pointer',
-                fontSize: '16px',
+                padding: "8px 16px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                cursor: "pointer",
+                fontSize: "16px",
                 backgroundColor: "#fff",
-                color: "#000"
+                color: "#000",
               }}
             >
-              <option key={"month"}>
-                Month
-              </option>
+              <option key={"month"}>Month</option>
               {months.map((month, index) => (
                 <option key={index} value={month}>
                   {month}
@@ -47,31 +89,50 @@ function CardList({table, heading, tableColumns, tableData,folderList }) {
           </div>
         </div>
         <div className="actions">
-          <input type="search" className="form-control search" placeholder='Search' />
-         {table && <select name="document_status" className="form-select">
-            <option>Document Status</option>
-            <option value="Status 1">Status 1</option>
-            <option value="Status 2">Status 2</option>
-          </select>}
-         {table && <select name="sort_by" className="form-select">
-            <option>Sort By</option>
-            <option value="Ascending">Ascending</option>
-            <option value="Decending">Decending</option>
-          </select>}
-          <button className='btn btn-primary'><span>Search</span> <img src="/icons/search.svg" alt="" /></button>
-          <button className='btn btn-primary'><span>Export File</span><img src="/icons/export_file.svg" alt="" /></button>
-         {table && <button className='btn btn-primary'><span>Move To</span><img src="/icons/move_to.svg" alt="" /></button>}
+          <input
+            type="search"
+            className="form-control search"
+            placeholder="Search"
+          />
+          {table && (
+            <select name="document_status" className="form-select">
+              <option>Document Status</option>
+              <option value="Status 1">Status 1</option>
+              <option value="Status 2">Status 2</option>
+            </select>
+          )}
+          {table && (
+            <select name="sort_by" className="form-select">
+              <option>Sort By</option>
+              <option value="Ascending">Ascending</option>
+              <option value="Decending">Decending</option>
+            </select>
+          )}
+          <button className="btn btn-primary">
+            <span>Search</span> <img src="/icons/search.svg" alt="" />
+          </button>
+          <button className="btn btn-primary" onClick={handleExportClick}>
+            <span>Export File</span>
+            <img src="/icons/export_file.svg" alt="" />
+          </button>
+          {table && (
+            <button className="btn btn-primary">
+              <span>Move To</span>
+              <img src="/icons/move_to.svg" alt="" />
+            </button>
+          )}
           {/* <button className='btn btn-primary'><span>Create New</span><img src="/icons/create_new.svg" alt="" /></button> */}
-          <Dropdown className='create-new'>
+          <Dropdown className="create-new">
             <Dropdown.Toggle variant="primary" id="create_new">
-            <span>Create New</span><img src="/icons/create_new.svg" alt="" />
+              <span>Create New</span>
+              <img src="/icons/create_new.svg" alt="" />
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item href="#/folder">Folder</Dropdown.Item>
               <Dropdown.Item href="#/link">Link</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Dropdown className='more'>
+          <Dropdown className="more">
             <Dropdown.Toggle variant="primary" id="more">
               <img src="/icons/more.svg" alt="" />
             </Dropdown.Toggle>
@@ -81,15 +142,37 @@ function CardList({table, heading, tableColumns, tableData,folderList }) {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        {
-          table && <ListTable columnNames={tableColumns} data={tableData} />
-        }     
-        {
-          folderList && <FolderList items={folderList}/>
-        }   
+        {table && <ListTable columnNames={tableColumns} data={tableData} />}
+        {folderList && <FolderList items={folderList} />}
       </div>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Select File to Download</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <List>
+            {tableData.map((file) => (
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={() => handleDownload(file.id, file.fileUnqName)}
+                >
+                  <ListItemIcon>
+                    <FileDownload />
+                  </ListItemIcon>
+                  <ListItemText primary={file.fileUnqName} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
-  )
+  );
 }
 
-export default CardList
+export default CardList;

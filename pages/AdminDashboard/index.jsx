@@ -55,19 +55,19 @@ const  AdminDashboard = () => {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               breakpoints={{
-                640: {
-                  slidesPerView: 2, // for small screens
-                },
-                768: {
-                  slidesPerView: 2, // for medium screens
-                },
-                1024: {
-                  slidesPerView: 3, // for larger screens
-                },
-                1280: {
-                  slidesPerView: 4.5, // for extra large screens
-                },
-              }}
+              640: {
+                slidesPerView: 2, // for small screens
+              },
+              768: {
+                slidesPerView: 2, // for medium screens
+              },
+              1024: {
+                slidesPerView: 3, // for larger screens
+              },
+              1280: {
+                slidesPerView: 4.5, // for extra large screens
+              },
+            }}
               navigation
             >
               {swiperData.map((item, index) => {

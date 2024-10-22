@@ -1,4 +1,9 @@
 const ListTable = ({ columnNames, data }) => {
+  function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const options = { month: "long", year: "numeric" };
+    return date.toLocaleString("en-US", options);
+  }
   return (
     <>
       <div className="list-table">
@@ -18,10 +23,14 @@ const ListTable = ({ columnNames, data }) => {
                     {columnNames.map((innerItem, index) => {
                       return (
                         <td key={"td" + index}>
-                          {innerItem?.elementName == "name" && (
+                          {innerItem?.elementName == "fileUnqName" && (
                             <img src="/icons/pdf.svg" />
                           )}
-                          {item[innerItem?.elementName]}
+                          {innerItem?.elementName == "modifiedDate"
+                            ? formatDate(item[innerItem?.elementName])
+                            : item[innerItem?.elementName]
+                            ? item[innerItem?.elementName]
+                            : "-"}
                         </td>
                       );
                     })}
@@ -29,138 +38,6 @@ const ListTable = ({ columnNames, data }) => {
                 );
               })}
             </tbody>
-            {/* <tbody>
-                    <tr>
-                      <td>Patrika Mumbi Gacukia</td>
-                      <td>43</td>
-                      <td>Heart</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,000</td>
-                      <td>10-03-2005</td>
-                      <td>9546457511</td>
-                      <td>Dr. Preeti Jabbal</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Piya jonn smiths</td>
-                      <td>24</td>
-                      <td>Brain</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,21</td>
-                      <td>12-03-2005</td>
-                      <td>546461454</td>
-                      <td>Dr. nila shahanj</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Nil Nithesh kathiwala</td>
-                      <td>50</td>
-                      <td>ortho</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>854611</td>
-                      <td>16-03-2005</td>
-                      <td>87967546</td>
-                      <td>Dr. kuldip sing</td>
-                      <td>Pending</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Piya jonn smiths</td>
-                      <td>24</td>
-                      <td>Brain</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,000</td>
-                      <td>10-03-2005</td>
-                      <td>9546457511</td>
-                      <td>Dr. Preeti Jabbal</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Nil Nithesh kathiwala</td>
-                      <td>50</td>
-                      <td>ortho</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>854611</td>
-                      <td>16-03-2005</td>
-                      <td>87967546</td>
-                      <td>Dr. kuldip sing</td>
-                      <td>Pending</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Piya jonn smiths</td>
-                      <td>24</td>
-                      <td>Brain</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,000</td>
-                      <td>10-03-2005</td>
-                      <td>9546457511</td>
-                      <td>Dr. Preeti Jabbal</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Nil Nithesh kathiwala</td>
-                      <td>50</td>
-                      <td>ortho</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>854611</td>
-                      <td>16-03-2005</td>
-                      <td>87967546</td>
-                      <td>Dr. kuldip sing</td>
-                      <td>Pending</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Piya jonn smiths</td>
-                      <td>24</td>
-                      <td>Brain</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,21</td>
-                      <td>12-03-2005</td>
-                      <td>546461454</td>
-                      <td>Dr. nila shahanj</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Patrika Mumbi Gacukia</td>
-                      <td>43</td>
-                      <td>Heart</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,000</td>
-                      <td>10-03-2005</td>
-                      <td>9546457511</td>
-                      <td>Dr. Preeti Jabbal</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                    <tr>
-                      <td>Piya jonn smiths</td>
-                      <td>24</td>
-                      <td>Brain</td>
-                      <td>AAR-INV/2023559640</td>
-                      <td>2,10,000</td>
-                      <td>10-03-2005</td>
-                      <td>9546457511</td>
-                      <td>Dr. Preeti Jabbal</td>
-                      <td>Proceed</td>
-                      <td>Bupa International</td>
-                      <td>Self</td>
-                    </tr>
-                  </tbody> */}
           </table>
         </div>
       </div>
