@@ -152,7 +152,7 @@ function CardList({
         <Modal.Body>
           <List>
             {tableData.map((file) => (
-              <ListItem disablePadding>
+              <ListItem disablePadding key={file.id}>
                 <ListItemButton
                   onClick={() => handleDownload(file.id, file.fileUnqName)}
                 >
