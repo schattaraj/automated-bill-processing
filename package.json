@@ -14,6 +14,7 @@
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
     "automated-bill-processing": "file:",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "highcharts": "^11.4.8",
     "highcharts-react-official": "^3.2.1",
