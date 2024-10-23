@@ -27,7 +27,7 @@ import withAuth from "@/components/withAuth";
 const DashboardMap = dynamic(() => import("@/components/DashBoardMap"), {
   ssr: false,
 });
-const  AdminDashboard = () => {
+const AdminDashboard = () => {
   const [providerCountry, setProviderCountry] = useState(0);
 
   const handleNext = () => {
@@ -55,19 +55,22 @@ const  AdminDashboard = () => {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               breakpoints={{
-              640: {
-                slidesPerView: 2, // for small screens
-              },
-              768: {
-                slidesPerView: 2, // for medium screens
-              },
-              1024: {
-                slidesPerView: 3, // for larger screens
-              },
-              1280: {
-                slidesPerView: 4.5, // for extra large screens
-              },
-            }}
+                0: {
+                  slidesPerView: 1, // for extra small screens
+                },
+                640: {
+                  slidesPerView: 2, // for small screens
+                },
+                768: {
+                  slidesPerView: 2, // for medium screens
+                },
+                1024: {
+                  slidesPerView: 3, // for larger screens
+                },
+                1280: {
+                  slidesPerView: 4.5, // for extra large screens
+                },
+              }}
               navigation
             >
               {swiperData.map((item, index) => {
@@ -305,5 +308,5 @@ const  AdminDashboard = () => {
       <Footer />
     </>
   );
-}
-export default withAuth(AdminDashboard, ['ADMIN']); 
+};
+export default withAuth(AdminDashboard, ["ADMIN"]);
